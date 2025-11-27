@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Golden Hive Honey – Pure Artisan Honey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-dark: #020617;
+      --bg-card: #020617;
+      --honey: #fbbf24;
+      --honey-dark: #d97706;
+      --accent: #f97316;
+      --white: #ffffff;
+      --muted: #9ca3af;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.26);
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.88),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-wrap img {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      object-fit: contain;
+      background: radial-gradient(circle at 20% 20%, #fef9c3 0, #f97316 40%, #7c2d12 100%);
+      box-shadow: 0 0 25px rgba(251, 191, 36, 0.6);
+      padding: 3px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #f97316, #facc15);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: #f9fafb;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease,
+        color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.3);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #e5e7eb;
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+      border-color: rgba(248, 250, 252, 0.9);
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 20% 20%, #fef9c3 0, #fbbf24 35%, #b45309 100%);
+      color: #0f172a;
+      font-weight: 600;
+      box-shadow: 0 12px 35px rgba(250, 204, 21, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 20px 48px rgba(252, 211, 77, 0.95);
+      filter: brightness(1.06);
+    }
+
+    /* MAIN LAYOUT */
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.1fr);
+      gap: 40px;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(22, 163, 74, 0.12);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #bbf7d0 0, #22c55e 70%);
+      box-shadow: 0 0 12px rgba(74, 222, 128, 0.9);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span.highlight {
+      background: linear-gradient(120deg, #fbbf24, #f97316, #facc15);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #e5e7eb;
+      max-width: 32rem;
+      opacity: 0.88;
+      margin-bottom: 22px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 18px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 26px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta-item span.icon {
+      font-size: 1.1rem;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 2px solid #020617;
+      background: linear-gradient(145deg, #fbbf24, #f97316);
+      margin-left: -7px;
+      box-shadow: 0 0 14px rgba(251, 191, 36, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .avatar:first-child {
+      margin-left: 0;
+    }
+
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .rating-pill span.star {
+      color: #facc15;
+      text-shadow: 0 0 8px rgba(250, 204, 21, 0.7);
+    }
+
+    .hero-right {
+      position: relative;
+      min-height: 300px;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 30px;
+      padding: 24px 20px 18px;
+      background: radial-gradient(circle at top left, #fef9c3 0, #fed7aa 40%, #f97316 100%);
+      box-shadow: var(--shadow-soft);
+      color: #7c2d12;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background-image: radial-gradient(
+          circle at 10% 20%,
+          rgba(255, 255, 255, 0.3) 0,
+          transparent 50%
+        ),
+        radial-gradient(circle at 80% 0, rgba(254, 243, 199, 0.7) 0, transparent 45%),
+        radial-gradient(circle at 0 100%, rgba(251, 191, 36, 0.8) 0, transparent 50%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-card-main {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-main img {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      filter: drop-shadow(0 22px 45px rgba(124, 45, 18, 0.7));
+      transform: translateY(2px);
+      border-radius: 20px;
+    }
+
+    .hero-card-copy {
+      font-size: 0.83rem;
+    }
+
+    .hero-card-copy h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-copy p {
+      margin-bottom: 6px;
+    }
+
+    .hero-card-copy .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      font-size: 0.7rem;
+      margin-top: 4px;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(254, 249, 195, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .hero-card-price {
+      text-align: right;
+    }
+
+    .hero-card-price strong {
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .honeycomb {
+      position: absolute;
+      width: 50px;
+      height: 55px;
+      background: linear-gradient(145deg, rgba(248, 250, 252, 0.95), rgba(254, 243, 199, 0.9));
+      clip-path: polygon(
+        25% 5%,
+        75% 5%,
+        100% 50%,
+        75% 95%,
+        25% 95%,
+        0 50%
+      );
+      opacity: 0.7;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(10px);
+      animation: float 9s ease-in-out infinite;
+    }
+
+    .honeycomb:nth-child(1) {
+      top: -26px;
+      right: -10px;
+      animation-delay: -2s;
+    }
+
+    .honeycomb:nth-child(2) {
+      bottom: -20px;
+      left: -12px;
+      width: 60px;
+      height: 66px;
+      animation-duration: 10s;
+    }
+
+    .honeycomb:nth-child(3) {
+      top: 38%;
+      right: -26px;
+      width: 44px;
+      height: 48px;
+      animation-duration: 7s;
+      animation-direction: reverse;
+      opacity: 0.5;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-12px) translateX(6px); }
+    }
+
+    /* SECTIONS */
+
+    section {
+      margin-top: 70px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 24rem;
+    }
+
+    /* BENEFITS */
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.92));
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
+      position: relative;
+      overflow: hidden;
+      transform-origin: center;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(250, 204, 21, 0.7);
+      background: linear-gradient(145deg, #020617, #0f172a);
+    }
+
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      background: radial-gradient(circle at 30% 30%, #fef9c3 0, #fbbf24 40%, #b45309 100%);
+      box-shadow: 0 10px 22px rgba(250, 204, 21, 0.75);
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      color: #e5e7eb;
+      opacity: 0.9;
+    }
+
+    /* PRODUCTS */
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .product-card {
+      background: linear-gradient(145deg, #fef3c7, #fed7aa);
+      border-radius: 22px;
+      padding: 14px 14px 16px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-ribbon {
+      position: absolute;
+      top: 10px;
+      right: -40px;
+      transform: rotate(35deg);
+      background: linear-gradient(to right, #16a34a, #22c55e);
+      color: #ecfdf5;
+      font-size: 0.7rem;
+      padding: 4px 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.6);
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .product-info {
+      max-width: 60%;
+    }
+
+    .product-name {
+      font-size: 0.98rem;
+      color: #7c2d12;
+      font-weight: 600;
+    }
+
+    .product-origin {
+      font-size: 0.7rem;
+      color: #9a3412;
+      opacity: 0.9;
+    }
+
+    .product-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(251, 113, 133, 0.12);
+      color: #9f1239;
+      font-size: 0.7rem;
+    }
+
+    .product-body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .product-details {
+      font-size: 0.8rem;
+      color: #7c2d12;
+    }
+
+    .product-details p {
+      margin-bottom: 2px;
+    }
+
+    .product-image {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 24px rgba(124, 45, 18, 0.7));
+      margin: 0 auto;
+      border-radius: 12px;
+    }
+
+    .product-price-group {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #7c2d12;
+    }
+
+    .product-price-group strong {
+      display: block;
+      font-size: 1.05rem;
+      color: #7c2d12;
+    }
+
+    .product-cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 0.75rem;
+    }
+
+    .product-cta button {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 12px;
+      background: #0f172a;
+      color: #fefce8;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+    }
+
+    .product-cta button:hover {
+      transform: translateY(-1px) scale(1.02);
+      background: #020617;
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.95);
+    }
+
+    .product-cta .stock {
+      color: #16a34a;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* TESTIMONIALS */
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 2.1fr 1.2fr;
+      gap: 18px;
+    }
+
+    .testimonial-main {
+      background: radial-gradient(circle at top left, #facc15 0, #0f172a 60%);
+      border-radius: 26px;
+      padding: 18px 16px 16px;
+      color: #fefce8;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.8);
+    }
+
+    .testimonial-main::before {
+      content: "“";
+      position: absolute;
+      font-size: 6rem;
+      line-height: 1;
+      opacity: 0.14;
+      top: -12px;
+      right: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 0.9rem;
+      max-width: 32rem;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .testimonial-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: linear-gradient(145deg, #f97316, #ea580c);
+      border: 2px solid rgba(248, 250, 252, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fefce8;
+      line-height: 1;
+    }
+
+    .testimonial-author-info {
+      font-size: 0.8rem;
+    }
+
+    .testimonial-author-info span {
+      display: block;
+    }
+
+    .testimonial-author-info span.name {
+      font-weight: 600;
+    }
+
+    .testimonial-author-info span.role {
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+
+    .testimonial-rating {
+      margin-left: auto;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .testimonial-rating span.star {
+      color: #facc15;
+    }
+
+    .testimonial-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .testimonial-mini {
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      border-radius: 18px;
+      padding: 10px 12px;
+      font-size: 0.75rem;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .testimonial-mini strong {
+      font-size: 0.8rem;
+    }
+
+    .testimonial-mini span.label {
+      font-size: 0.7rem;
+      color: #a5b4fc;
+    }
+
+    /* CONTACT / CTA */
+
+    .cta {
+      background: radial-gradient(circle at top, rgba(248, 250, 252, 0.2) 0, transparent 60%);
+      border-radius: 30px;
+      padding: 22px 18px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: grid;
+      grid-template-columns: 1.4fr 1.1fr;
+      gap: 18px;
+      align-items: center;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .cta h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 14px;
+    }
+
+    .cta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: #e5e7eb;
+    }
+
+    .cta-pill {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cta-pill span.icon {
+      font-size: 1rem;
+    }
+
+    .contact-form {
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 22px;
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.8);
+      font-size: 0.8rem;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .field {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field label {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 7px 10px;
+      color: #e5e7eb;
+      font-size: 0.78rem;
+      outline: none;
+      transition: border var(--transition-fast), box-shadow var(--transition-fast),
+        background 0.2s ease;
+    }
+
+    .field textarea {
+      resize: none;
+      border-radius: 16px;
+      min-height: 70px;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(250, 204, 21, 0.9);
+      box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.6), 0 0 18px rgba(250, 204, 21, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .contact-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+      gap: 8px;
+    }
+
+    .contact-footer small {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .contact-footer button {
+      border-radius: 999px;
+      border: none;
+      padding: 7px 12px;
+      background: linear-gradient(to right, #fbbf24, #f97316);
+      color: #0f172a;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 14px 35px rgba(251, 191, 36, 0.8);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    .contact-footer button:hover {
+      transform: translateY(-1px) scale(1.01);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 45px rgba(251, 191, 36, 0.95);
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      padding: 16px 20px 24px;
+      margin-top: 60px;
+      color: #6b7280;
+      font-size: 0.75rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.18s ease;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    /* REVEAL ANIMATION */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .cta {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .testimonials-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      main {
+        padding-inline: 16px;
+      }
+      .benefits-grid,
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-card-main {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .benefits-grid,
+      .products-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-meta {
+        flex-direction: column;
+      }
+      .cta-list {
+        flex-direction: column;
+      }
+      .contact-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <nav class="nav">
+      <div class="logo-wrap">
+        <!-- 3D glossy jar logo -->
+        <img src="logo.png" alt="Golden Hive Honey logo" />
+        <div class="logo-text">
+          <span>GOLDEN HIVE</span>
+          <span>Pure artisan honey</span>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#benefits">Benefits</a>
+        <a href="#products">Products</a>
+        <a href="#stories">Stories</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-cta">
+        <button class="btn btn-outline">Sign in</button>
+        <button class="btn btn-primary">
+          Shop now
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Fresh harvest · Ships in 24h
+        </div>
+        <h1>
+          Honey that tastes like
+          <span class="highlight">real flowers</span>, not sugar.
+        </h1>
+        <p class="hero-subtitle">
+          Golden Hive Honey is cold-extracted, never blended and never overheated.
+          Straight from small bee farms to your morning coffee, yogurt and toast.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary">
+            Browse jars
+          </button>
+          <button class="btn btn-outline">
+            How we harvest
+          </button>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="icon">🌿</span>
+            100% raw & unfiltered
+          </div>
+          <div class="hero-meta-item">
+            <span class="icon">📍</span>
+            Sourced from pesticide-free valleys
+          </div>
+        </div>
+
+        <div class="trust-row">
+          <div class="avatars">
+            <div class="avatar">A</div>
+            <div class="avatar">M</div>
+            <div class="avatar">S</div>
+            <div class="avatar">L</div>
+          </div>
+          <span>Trusted by 1,500+ repeat customers</span>
+          <div class="rating-pill">
+            <span class="star">★★★★★</span>
+            <span>4.9 / 5 average rating</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <!-- floating honeycombs -->
+          <div class="honeycomb"></div>
+          <div class="honeycomb"></div>
+          <div class="honeycomb"></div>
+
+          <div class="hero-card-main">
+            <!-- use one of your jar mockups here -->
+            <img src="honey-jar-mockup-1.png" alt="Premium honey jar mockup" />
+            <div class="hero-card-copy">
+              <h3>Signature Wildflower Honey</h3>
+              <p>
+                Thick, golden and naturally sweet. Drizzle over pancakes, swirl into
+                tea or enjoy straight from the spoon.
+              </p>
+              <div class="pill">
+                <span>🍯</span>
+                Lab-tested for purity & pollen
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <div class="hero-card-chip">
+              <span>🌤</span>
+              Spring 2025 harvest
+            </div>
+            <div class="hero-card-price">
+              <span>Starting at</span>
+              <strong>$8.90</strong>
+              <small>/ 500 g glass jar</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section id="benefits" class="reveal">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Why real honey changes everything.</h2>
+        </div>
+        <p class="section-subtitle">
+          Most “honey” on shelves is blended and heated until it loses its character.
+          We keep every jar as close as possible to what the bees created.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        <article class="card">
+          <div class="card-icon">🌺</div>
+          <h3 class="card-title">Complex floral flavor</h3>
+          <p class="card-text">
+            Each jar reflects the flowers blooming around our apiaries—wild herbs,
+            clover, fruit trees and more—for a layered, aromatic sweetness.
+          </p>
+          <span class="card-tag">Single-region traceability on every batch</span>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🧪</div>
+          <h3 class="card-title">Nothing added, nothing hidden</h3>
+          <p class="card-text">
+            Third-party lab tests verify no added syrups, no coloring and no industrial
+            processing that destroys enzymes or nutrients.
+          </p>
+          <span class="card-tag">Purity certificate available by QR code</span>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🐝</div>
+          <h3 class="card-title">Bee-first beekeeping</h3>
+          <p class="card-text">
+            We work only with small beekeepers who leave enough honey for the hive,
+            rotate frames responsibly and protect local biodiversity.
+          </p>
+          <span class="card-tag">Every jar supports healthy pollinators</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="reveal">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Pick your perfect jar.</h2>
+        </div>
+        <p class="section-subtitle">
+          Choose from three distinct honey profiles, crafted for daily use, cozy
+          winter drinks or gifting someone you really like.
+        </p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <article class="product-card">
+          <div class="product-ribbon">Best seller</div>
+          <div class="product-header">
+            <div class="product-info">
+              <div class="product-name">Classic Wildflower Honey</div>
+              <div class="product-origin">From high-altitude valleys</div>
+            </div>
+            <div class="product-badge">Everyday sweetness</div>
+          </div>
+
+          <div class="product-body">
+            <div class="product-details">
+              <p>• 500 g glass jar</p>
+              <p>• Balanced, bright and floral</p>
+              <p>• Perfect for tea and toast</p>
+            </div>
+            <img
+              src="honey-jar-mockup-2.png"
+              alt="Classic wildflower honey jar"
+              class="product-image"
+            />
+          </div>
+
+          <div class="product-cta">
+            <div class="product-price-group">
+              <span>From</span>
+              <strong>$8.90</strong>
+              <span>Ships within 24h</span>
+            </div>
+            <span class="stock">
+              <span>●</span>
+              In stock
+            </span>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card">
+          <div class="product-header">
+            <div class="product-info">
+              <div class="product-name">Eucalyptus Comfort Honey</div>
+              <div class="product-origin">Mountain forest apiaries</div>
+            </div>
+            <div class="product-badge">Gentle for throat</div>
+          </div>
+
+          <div class="product-body">
+            <div class="product-details">
+              <p>• 350 g glass jar</p>
+              <p>• Deep, minty & soothing notes</p>
+              <p>• Ideal with hot lemon water</p>
+            </div>
+            <img
+              src="honey-jar-mockup-3.png"
+              alt="Eucalyptus honey jar"
+              class="product-image"
+            />
+          </div>
+
+          <div class="product-cta">
+            <div class="product-price-group">
+              <span>From</span>
+              <strong>$9.90</strong>
+              <span>Includes recipe card</span>
+            </div>
+            <span class="stock">
+              <span>●</span>
+              Low stock
+            </span>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card">
+          <div class="product-header">
+            <div class="product-info">
+              <div class="product-name">Sunrise Breakfast Trio</div>
+              <div class="product-origin">Three curated varieties</div>
+            </div>
+            <div class="product-badge">Save 15%</div>
+          </div>
+
+          <div class="product-body">
+            <div class="product-details">
+              <p>• 3 × 250 g mini jars</p>
+              <p>• Wildflower, eucalyptus, citrus blossom</p>
+              <p>• Perfect for gifting or tasting flights</p>
+            </div>
+            <img
+              src="honey-jar-mockup-4.png"
+              alt="Breakfast trio honey gift set"
+              class="product-image"
+            />
+          </div>
+
+          <div class="product-cta">
+            <div class="product-price-group">
+              <span>From</span>
+              <strong>$19.90</strong>
+              <span>Free gift wrap</span>
+            </div>
+            <span class="stock">
+              <span>●</span>
+              Limited run
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- STORIES / TESTIMONIALS -->
+    <section id="stories" class="reveal">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Real people, sweeter mornings.</h2>
+        </div>
+        <p class="section-subtitle">
+          Customers who replaced refined sugar with Golden Hive share how a small habit
+          turned into a daily ritual they actually look forward to.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <article class="testimonial-main">
+          <p class="testimonial-text">
+            “I switched to Golden Hive for my coffee and oatmeal and I will never go back.
+            The flavor is strong but not overpowering, and it actually tastes different
+            depending on the harvest. It feels like getting a tiny piece of the countryside
+            in every jar.”
+          </p>
+
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">E</div>
+            <div class="testimonial-author-info">
+              <span class="name">Emma Johnson</span>
+              <span class="role">Customer since 2023</span>
+            </div>
+            <div class="testimonial-rating">
+              <span class="star">★★★★★</span>
+              <span>4.9 / 5</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="testimonial-side">
+          <article class="testimonial-mini">
+            <strong>Perfect for coffee & lattes ☕</strong>
+            <p>
+              “One teaspoon is enough. It melts smoothly
+              and doesn’t leave a weird sugary aftertaste.”
+            </p>
+            <span class="label">Daniel · Home barista</span>
+          </article>
+
+          <article class="testimonial-mini">
+            <strong>Fast delivery, glass jars only 🚚</strong>
+            <p>
+              “My order arrived the next day, carefully packed in glass.
+              It looks premium enough to gift straight away.”
+            </p>
+            <span class="label">Mia · Gift shopper</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section id="contact" class="reveal">
+      <div class="cta">
+        <div>
+          <h3>Ready to upgrade your sweetener?</h3>
+          <p>
+            Tell us how you plan to use your honey and we’ll recommend the perfect jar:
+            for daily coffee, baking, cold-season comfort or memorable gifts.
+          </p>
+
+          <div class="cta-list">
+            <div class="cta-pill">
+              <span class="icon">📦</span>
+              Nationwide shipping
+            </div>
+            <div class="cta-pill">
+              <span class="icon">🔍</span>
+              Order tracking in real time
+            </div>
+            <div class="cta-pill">
+              <span class="icon">💬</span>
+              Friendly support over WhatsApp
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will get back to you very soon 🐝');">
+          <div class="contact-row">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" type="text" placeholder="Alex Smith" required />
+            </div>
+            <div class="field">
+              <label for="phone">WhatsApp number</label>
+              <input id="phone" type="tel" placeholder="+51 999 999 999" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">What are you looking for?</label>
+            <textarea
+              id="message"
+              placeholder="Example: everyday honey for coffee, a winter comfort jar, corporate gifts, etc."
+            ></textarea>
+          </div>
+
+          <div class="contact-footer">
+            <small>Typical response time: under 2 business hours.</small>
+            <button type="submit">
+              Send message
+              <span>✉️</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2025 Golden Hive Honey. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#!">Privacy policy</a>
+        <a href="#!">Terms of service</a>
+        <a href="#!">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
